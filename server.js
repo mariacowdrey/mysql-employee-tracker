@@ -94,12 +94,12 @@ function viewEmployee() {
 
   var query =
     `SELECT e.id, e.first_name, e.last_name, r.title, d.name AS department, r.salary, CONCAT(m.first_name, ' ', m.last_name) AS manager
-  FROM employee e
+  FROM employees e
   LEFT JOIN role r
 	ON e.role_id = r.id
   LEFT JOIN department d
   ON d.id = r.department_id
-  LEFT JOIN employee m
+  LEFT JOIN employees m
 	ON m.id = e.manager_id`
 
   connection.query(query, function (err, res) {
@@ -152,12 +152,12 @@ function updateEmployeeRole(){
 
   var query =
     `SELECT e.id, e.first_name, e.last_name, r.title, d.name AS department, r.salary, CONCAT(m.first_name, ' ', m.last_name) AS manager
-  FROM employee e
+  FROM employees e
   JOIN role r
 	ON e.role_id = r.id
   JOIN department d
   ON d.id = r.department_id
-  JOIN employee m
+  JOIN employees m
 	ON m.id = e.manager_id`
 
   connection.query(query, function (err, res) {
@@ -333,7 +333,7 @@ function addRole() {
 
   var query =
     `SELECT d.id, d.name, r.salary AS budget
-    FROM employee e
+    FROM employees e
     JOIN role r
     ON e.role_id = r.id
     JOIN department d
@@ -400,7 +400,7 @@ function removeEmployee() {
 
   var query =
     `SELECT e.id, e.first_name, e.last_name
-      FROM employee e`
+      FROM employees e`
 
   connection.query(query, function (err, res) {
     if (err) throw err;

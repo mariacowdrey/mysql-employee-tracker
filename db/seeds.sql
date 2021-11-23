@@ -1,38 +1,28 @@
 USE employeesDB;
 
 INSERT INTO department (name)
-VALUES ("Sales");
-INSERT INTO department (name)
-VALUES ("Engineering");
-INSERT INTO department (name)
-VALUES ("Finance");
-INSERT INTO department (name)
-VALUES ("Legal");
+VALUES 
+("Product Management"),
+("Engineering"),
+("Quality Assurance"),
+("Project Management");
 
 INSERT INTO role (title, salary, department_id)
-VALUES ("Sales Lead", 100000, 1);
-INSERT INTO role (title, salary, department_id)
-VALUES ("Lead Engineer", 150000, 2);
-INSERT INTO role (title, salary, department_id)
-VALUES ("Software Engineer", 120000, 2);
-INSERT INTO role (title, salary, department_id)
-VALUES ("Accountant", 125000, 3);
-INSERT INTO role (title, salary, department_id)
-VALUES ("Legal Team Lead", 250000, 4);
+VALUES 
+("Product Manager", 140000, 1),
+("Director, Product Management", 200000, 1),
+("Lead Engineer", 150000, 2),
+("Software Engineer", 120000, 2),
+("QA Manager", 140000, 3),
+("Project Manager", 110000, 4);
 
-INSERT INTO employee (first_name, last_name, role_id, manager_id)
-VALUES ("Jane", "Dannon", 1, null);
-INSERT INTO employee (first_name, last_name, role_id, manager_id)
-VALUES ("Norah", "Reyes", 3, 3);
-INSERT INTO employee (first_name, last_name, role_id, manager_id)
-VALUES ("Kate", "Mell", 2, null);
-INSERT INTO employee (first_name, last_name, role_id, manager_id)
-VALUES ("Shawn", "Betts", 4, null);
-INSERT INTO employee (first_name, last_name, role_id, manager_id)
-VALUES ("Lars", "Hurst", 5, null);
-INSERT INTO employee (first_name, last_name, role_id, manager_id)
-VALUES ("Gary", "Loyd", 2, null);
-INSERT INTO employee (first_name, last_name, role_id, manager_id)
-VALUES ("Tim", "Cruz", 3, 6);
-INSERT INTO employee (first_name, last_name, role_id, manager_id)
-VALUES ("Daisy", "Hardy", 1, 1);
+INSERT INTO employees (first_name, last_name, role_id, manager_id)
+VALUES 
+("Jane", "Dannon", 2, null),
+("Norah", "Reyes", 4, 3),
+("Kate", "Mell", 3, null),
+("Shawn", "Betts", 5, null),
+("Lars", "Hurst", 6, null),
+("Gary", "Loyd", 3, null),
+("Tim", "Cruz", 4, 6),
+("Daisy", "Hardy", 1, 1);
