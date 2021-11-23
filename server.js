@@ -1,41 +1,27 @@
-const mysql = require("mysql2");
+const connection = require('./config/connection');
 const inquirer = require("inquirer");
 require("console.table");
 
-//mysql connection
-const connection = mysql.createConnection({
-    host: 'localhost',
-
-    // Your port; if not 3306
-    port: 3306,
-
-    // Your username
-    user: 'root',
-
-    // Your password
-    password: 'Jackson17*',
-    database: 'employeesDB'
-});
-
+// Connect to database
 connection.connect(function (err) {
-    if (err) throw err;
-    console.log("connected as id " + connection.threadId);
-    console.log(`
-    ╔═══╗─────╔╗──────────────╔═╗╔═╗
-    ║╔══╝─────║║──────────────║║╚╝║║
-    ║╚══╦╗╔╦══╣║╔══╦╗─╔╦══╦══╗║╔╗╔╗╠══╦═╗╔══╦══╦══╦═╗
-    ║╔══╣╚╝║╔╗║║║╔╗║║─║║║═╣║═╣║║║║║║╔╗║╔╗╣╔╗║╔╗║║═╣╔╝
-    ║╚══╣║║║╚╝║╚╣╚╝║╚═╝║║═╣║═╣║║║║║║╔╗║║║║╔╗║╚╝║║═╣║
-    ╚═══╩╩╩╣╔═╩═╩══╩═╗╔╩══╩══╝╚╝╚╝╚╩╝╚╩╝╚╩╝╚╩═╗╠══╩╝
-    ───────║║──────╔═╝║─────────────────────╔═╝║
-    ───────╚╝──────╚══╝─────────────────────╚══╝`)
-    // runs the app
-    firstPrompt();
+  if (err) throw err;
+  console.log("connected as id " + connection.threadId);
+  console.log(`
+  ╔═══╗─────╔╗──────────────╔═╗╔═╗
+  ║╔══╝─────║║──────────────║║╚╝║║
+  ║╚══╦╗╔╦══╣║╔══╦╗─╔╦══╦══╗║╔╗╔╗╠══╦═╗╔══╦══╦══╦═╗
+  ║╔══╣╚╝║╔╗║║║╔╗║║─║║║═╣║═╣║║║║║║╔╗║╔╗╣╔╗║╔╗║║═╣╔╝
+  ║╚══╣║║║╚╝║╚╣╚╝║╚═╝║║═╣║═╣║║║║║║╔╗║║║║╔╗║╚╝║║═╣║
+  ╚═══╩╩╩╣╔═╩═╩══╩═╗╔╩══╩══╝╚╝╚╝╚╩╝╚╩╝╚╩╝╚╩═╗╠══╩╝
+  ───────║║──────╔═╝║─────────────────────╔═╝║
+  ───────╚╝──────╚══╝─────────────────────╚══╝`)
+
+  firstPrompt();
 });
 
-// function which prompts the user for what action they should take
+// Start App
 function firstPrompt() {
-
+  
   inquirer
     .prompt({
       type: "list",
