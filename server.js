@@ -151,13 +151,13 @@ function viewRole() {
 function updateEmployeeRole(){
 
   var query =
-    `SELECT e.id, e.first_name, e.last_name, r.title, d.name AS department, r.salary, CONCAT(m.first_name, ' ', m.last_name) AS manager
+  `SELECT e.id, e.first_name, e.last_name, r.title, d.name AS department, r.salary, CONCAT(m.first_name, ' ', m.last_name) AS manager
   FROM employees e
-  JOIN role r
+  LEFT JOIN role r
 	ON e.role_id = r.id
-  JOIN department d
+  LEFT JOIN department d
   ON d.id = r.department_id
-  JOIN employees m
+  LEFT JOIN employees m
 	ON m.id = e.manager_id`
 
   connection.query(query, function (err, res) {
@@ -212,7 +212,7 @@ function promptEmployeeRole(employeeChoices, roleChoices) {
     ])
     .then(function (answer) {
 
-      var query = `UPDATE employee SET role_id = ? WHERE id = ?`
+      var query = `UPDATE employees SET role_id = ? WHERE id = ?`
 
       connection.query(query,
         [ answer.roleId,  
@@ -276,7 +276,7 @@ function promptInsert(roleChoices) {
     .then(function (answer) {
       console.log(answer);
 
-      var query = `INSERT INTO employee SET ?`
+      var query = `INSERT INTO employees SET ?`
    
       connection.query(query,
         {
@@ -428,7 +428,7 @@ function promptDelete(deleteEmployeeChoices) {
     ])
     .then(function (answer) {
 
-      var query = `DELETE FROM employee WHERE ?`;
+      var query = `DELETE FROM employees WHERE ?`;
 
       connection.query(query, { id: answer.employeeId }, function (err, res) {
         if (err) throw err;
