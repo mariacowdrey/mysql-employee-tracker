@@ -1,4 +1,4 @@
-# mysql-employee-tracker
+# MySQL Employee Tracker
   
 ## Description 
 A Node CLI application that uses Inquirer and MySQL to view, add, and delete employee data.
