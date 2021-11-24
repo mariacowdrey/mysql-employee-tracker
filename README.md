@@ -10,7 +10,7 @@ A Node CLI application that uses Inquirer and MySQL to view, add, and delete emp
 
 * First `git clone` this project
 * Run `npm install` in order to install the npm package dependencies as specified in the `package.json`
-* Create an `.env` file with your MySQL credentials:
+* Create an `.env` file in the root directory with your MySQL credentials:
 ```
 DB_USER='root or your username'
 DB_PW='your password'
